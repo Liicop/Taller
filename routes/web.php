@@ -6,14 +6,13 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\VehiculoController;
 use App\Http\Controllers\CitaController;
 use App\Http\Controllers\RepuestoController;
+use App\Http\Controllers\DashboardController;
 
 Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/dashboard', function () {
-    return view('dashboard');
-})->middleware(['auth', 'verified'])->name('dashboard');
+Route::get('/dashboard', [DashboardController::class, 'index'])->middleware(['auth', 'verified'])->name('dashboard');
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
@@ -23,6 +22,7 @@ Route::middleware('auth')->group(function () {
     Route::resource('vehiculos', VehiculoController::class);
     Route::resource('citas', CitaController::class);
     Route::resource('repuestos', RepuestoController::class);
+    
 });
 
 require __DIR__.'/auth.php';

@@ -1,17 +1,66 @@
-<x-app-layout>
-    <x-slot name="header">
-        <h2 class="font-semibold text-xl text-gray-800 dark:text-gray-200 leading-tight">
-            {{ __('Dashboard') }}
-        </h2>
-    </x-slot>
+<h1>
+    Bienvenido {{ auth()->user()->name }}
+</h1>
 
-    <div class="py-12">
-        <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
-            <div class="bg-white dark:bg-gray-800 overflow-hidden shadow-sm sm:rounded-lg">
-                <div class="p-6 text-gray-900 dark:text-gray-100">
-                    {{ __("You're logged in!") }}
-                </div>
-            </div>
-        </div>
-    </div>
-</x-app-layout>
+<form method="POST" action="{{ route('logout') }}">
+    @csrf
+    <button type="submit">Cerrar sesión</button>
+</form>
+
+@if (auth()->user()->super_user)
+<h2>Estadísticas</h2>
+
+<ul>
+
+    <li>
+        Clientes:
+        {{ $total_clientes }}
+    </li>
+
+    <li>
+        Vehículos:
+        {{ $total_vehiculos }}
+    </li>
+
+    <li>
+        Citas agendadas:
+        {{ $total_citas }}
+    </li>
+
+    <li>
+        Repuestos en inventario:
+        {{ $total_repuestos }}
+    </li>
+
+</ul>
+
+@else
+
+<h2>Acción</h2>
+<ul>
+    <li>
+        <a href="{{ route('citas.create') }}">Agendar cita</a>
+    </li>
+    <li>
+        <a href="{{ route('vehiculos.create') }}">Registrar vehículo</a>
+    </li>
+</ul>
+
+<ul>
+    <li>
+        <p>Tienes {{ $mis_citas }} citas agendadas</p>
+        <a href="{{ route('citas.index') }}">Ver citas</a>
+    </li>
+    <li>
+        <p>Tienes {{ $mis_vehiculos->count() }} vehículos registrados</p>
+            @foreach ($mis_vehiculos as $vehiculo)
+                <li>Placa: {{ $vehiculo->placa }} - Marca: {{ $vehiculo->marca }}</li>
+            @endforeach
+        <a href="{{ route('vehiculos.index') }}">Ver vehículos</a>
+    </li>
+</ul> 
+
+
+
+
+@endif
