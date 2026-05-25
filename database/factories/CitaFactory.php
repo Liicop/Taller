@@ -18,10 +18,11 @@ class CitaFactory extends Factory
     public function definition(): array
     {
         return [
-            'fecha'=> fake()->date(),
+            'vehiculo_id' => \App\Models\Vehiculo::factory(),
+            'fecha'=> fake()->dateTimeBetween('-6 months', 'now'),
             'hora' => fake()->time(),
             'motivo'=> fake()->sentence(),
-            'agendada' => true,
+            'agendada' => fake()->boolean(40),
         ];
     }
 }

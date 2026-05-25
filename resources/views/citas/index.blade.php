@@ -87,9 +87,9 @@
                         </form>
                             
                     @else
-                        <a href="{{ route('facturas.get_factura_by_id', $cita->factura) }}">
-                            Ver factura
-                        </a>
+
+                    <a href="{{ route('facturas.get_factura_by_id', $cita->factura) }}">Ver factura</a>
+                      
                     @endif
                 </td>
 
@@ -112,3 +112,5 @@
     </tbody>
 
 </table>
+
+

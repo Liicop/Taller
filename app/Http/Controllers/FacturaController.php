@@ -35,9 +35,9 @@ class FacturaController extends Controller
         return view('facturas.show', compact('factura', 'repuestos'));
     }
     
-    public function get_factura_by_id(int $id){
+    public function get_factura_by_id(Factura $factura){
 
-        $factura = Factura::find($id)->load('detalles.repuesto', 'cita.vehiculo');
+        $factura = Factura::find($factura->id)->load('detalles.repuesto', 'cita.vehiculo');
 
         if(!Auth::user()->super_user && $factura->cita->vehiculo->user_id != Auth::id()){
             return response()->json([

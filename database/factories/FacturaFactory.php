@@ -18,7 +18,7 @@ class FacturaFactory extends Factory
     public function definition(): array
     {
         return [
-            'total' => fake()->randomFloat(2, 10000, 500000),
+            'total' => 0,
             'pdf_path' => null,
         ];
     }

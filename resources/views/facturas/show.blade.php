@@ -70,11 +70,11 @@ Vehículo:
     </td>
 
     <td>
-        {{ $detalle->precio_unitario }}
+        $ {{ number_format($detalle->precio_unitario, 2) }}
     </td>
 
     <td>
-        {{ $detalle->subtotal }}
+        $ {{ number_format($detalle->subtotal, 2) }}
     </td>
 
     <td>
@@ -102,7 +102,7 @@ Vehículo:
 
 <h2>
 TOTAL:
-{{ $factura->total }}
+$ {{ number_format($factura->total, 2) }}
 </h2>
 
 <a href="{{ route('citas.index') }}">Finalizar Factura</a>

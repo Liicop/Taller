@@ -18,6 +18,7 @@ class VehiculoFactory extends Factory
     public function definition(): array
     {
         return [
+            'user_id' => \App\Models\User::factory(),
             'placa' => fake()->unique()->bothify('???###'),
             'marca' => fake()->randomElement([
                 'Toyota',

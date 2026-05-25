@@ -20,6 +20,7 @@
     <li>
         Vehículos:
         {{ $total_vehiculos }}
+        <a href="{{ route('vehiculos.index') }}">Ver vehículos</a>
     </li>
 
     <li>
@@ -31,6 +32,7 @@
     <li>
         Repuestos en inventario:
         {{ $total_repuestos }}
+        <a href="{{ route('repuestos.index') }}">Ver repuestos</a>
     </li>
     <li>
         Facturas:

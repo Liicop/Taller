@@ -18,7 +18,9 @@ class DetalleFacturaFactory extends Factory
     public function definition(): array
     {
         return [
-            //
+            'cantidad' => fake()->numberBetween(1,7),
+            'precio_unitario' => fake()->randomFloat(2, 10000, 450000),
+            'subtotal' => 0,
         ];
     }
 }

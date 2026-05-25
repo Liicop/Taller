@@ -20,7 +20,7 @@ class RepuestoFactory extends Factory
         return [
             'codigo' => fake()->unique->bothify('REP-####'),
             'nombre' => fake()->words(3, true),
-            'cantidad' => fake()->numberBetween(1,100),
+            'cantidad' => fake()->numberBetween(20,100),
             'precio' => fake()->randomFloat(2, 5000, 500000),
         ];
     }

@@ -9,7 +9,11 @@ use Illuminate\Support\Facades\Auth;
 class VehiculoController extends Controller
 {
     public function index(Request $request){
-        $vehiculos = $request->user()->vehiculos;
+        if(Auth::user()->super_user){
+            $vehiculos = Vehiculo::all();
+        }else{
+            $vehiculos = $request->user()->vehiculos;
+        }
 
         return view(
             'vehiculos.index', 
