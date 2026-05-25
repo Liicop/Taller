@@ -10,6 +10,7 @@ use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\FacturaController;
 use App\Http\Controllers\DetalleFacturaController;
 use App\Http\Controllers\PdfController;
+use App\Http\Controllers\EstadisticasController;
 
 Route::get('/', function () {
     return view('welcome');
@@ -31,6 +32,7 @@ Route::middleware('auth')->group(function () {
     Route::delete('detalles/{detalle}', [DetalleFacturaController::class, 'destroy'])->name('detalles.destroy');
 
     Route::get('facturas/{factura}/pdf', [PdfController::class, 'generar'])->name('facturas.pdf');
+    Route::get('estadisticas', [EstadisticasController::class, 'index'])->middleware('auth')->name('estadisticas.index');
 });
 
 require __DIR__.'/auth.php';

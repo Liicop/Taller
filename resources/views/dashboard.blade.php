@@ -9,6 +9,7 @@
 
 @if (auth()->user()->super_user)
 <h2>Estadísticas</h2>
+<a href="{{ route('estadisticas.index') }}">Ver estadísticas</a>
 
 <ul>
 
