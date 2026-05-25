@@ -7,6 +7,8 @@ use App\Http\Controllers\VehiculoController;
 use App\Http\Controllers\CitaController;
 use App\Http\Controllers\RepuestoController;
 use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\FacturaController;
+use App\Http\Controllers\DetalleFacturaController;
 
 Route::get('/', function () {
     return view('welcome');
@@ -22,7 +24,10 @@ Route::middleware('auth')->group(function () {
     Route::resource('vehiculos', VehiculoController::class);
     Route::resource('citas', CitaController::class);
     Route::resource('repuestos', RepuestoController::class);
-    
+    Route::resource('facturas', FacturaController::class);
+    Route::get('facturas/{factura}/ver', [FacturaController::class, 'get_factura_by_id'])->name('facturas.get_factura_by_id');
+    Route::post('facturas/{factura}/detalle', [DetalleFacturaController::class, 'store'])->name('detalles.store');
+    Route::delete('detalles/{detalle}', [DetalleFacturaController::class, 'destroy'])->name('detalles.destroy');
 });
 
 require __DIR__.'/auth.php';

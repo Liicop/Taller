@@ -10,9 +10,14 @@ use Illuminate\Validation\Rule;
 class CitaController extends Controller
 {
     public function index(){
-        $citas = Cita::whereHas('vehiculo', function ($query){
-            $query->where('user_id', Auth::id());
-        })->with('vehiculo')->get();
+        if(Auth::user()->super_user){
+            $citas = Cita::all();
+        }else{
+            $citas = Cita::whereHas('vehiculo', function ($query){
+                $query->where('user_id', Auth::id());
+            })->with('vehiculo')->get();
+        }
+        
         return view('citas.index', compact('citas'));
     }
 

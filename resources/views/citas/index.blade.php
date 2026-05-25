@@ -1,8 +1,11 @@
 <h1>Mis Citas</h1>
 
-<a href="{{ route('citas.create') }}">
-    Agendar Nueva Cita
-</a>
+@if(!Auth::user()->super_user)
+    <a href="{{ route('citas.create') }}">
+        Agendar Nueva Cita
+    </a>
+@endif
+
 
 <table border="1">
 
@@ -13,7 +16,11 @@
             <th>Hora</th>
             <th>Motivo</th>
             <th>Estado</th>
-            <th>Acciones</th>
+            @if(!Auth::user()->super_user)
+                <th>Acciones</th>
+            @else
+                <th>Facturar</th>
+            @endif
         </tr>
     </thead>
 
@@ -52,7 +59,9 @@
                     @endif
 
                 </td>
+                
                 <td>
+                    @if(!Auth::user()->super_user && $cita->agendada)
                     <a href="{{ route('citas.edit', $cita) }}">
                         Editar
                     </a>
@@ -69,8 +78,22 @@
                         </button>
 
                     </form>
-
+                    @elseif(Auth::user()->super_user && $cita->agendada)
+                        
+                        <form action="{{ route('facturas.store') }}" method="POST">
+                            <input type="hidden" name="cita_id" value="{{ $cita->id }}" >
+                            @csrf
+                            <button type="submit"> Facturar</button>
+                        </form>
+                            
+                    @else
+                        <a href="{{ route('facturas.get_factura_by_id', $cita->factura) }}">
+                            Ver factura
+                        </a>
+                    @endif
                 </td>
+
+                
 
             </tr>
 

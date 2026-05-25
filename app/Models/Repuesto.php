@@ -5,6 +5,8 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
+use App\Models\DetalleFactura;
+
 class Repuesto extends Model
 {
     /** @use HasFactory<\Database\Factories\RepuestoFactory> */
@@ -17,4 +19,8 @@ class Repuesto extends Model
         'precio',
         'imagen'
     ];
+
+    public function detallefactura(){
+        return $this->hasMany(DetalleFactura::class);
+    }
 }

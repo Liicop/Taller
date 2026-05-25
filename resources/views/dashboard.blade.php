@@ -25,11 +25,17 @@
     <li>
         Citas agendadas:
         {{ $total_citas }}
+        <a href="{{ route('citas.index') }}">Ver citas</a>
     </li>
 
     <li>
         Repuestos en inventario:
         {{ $total_repuestos }}
+    </li>
+    <li>
+        Facturas:
+        {{ $total_facturas }}
+        <a href="{{ route('facturas.index') }}">Ver facturas</a>
     </li>
 
 </ul>
@@ -48,7 +54,7 @@
 
 <ul>
     <li>
-        <p>Tienes {{ $mis_citas }} citas agendadas</p>
+        <p>Tienes {{ $mis_citas->count() }} citas agendadas</p>
         <a href="{{ route('citas.index') }}">Ver citas</a>
     </li>
     <li>
@@ -57,6 +63,10 @@
                 <li>Placa: {{ $vehiculo->placa }} - Marca: {{ $vehiculo->marca }}</li>
             @endforeach
         <a href="{{ route('vehiculos.index') }}">Ver vehículos</a>
+    </li>
+    <li>
+        <p>Tienes {{ $mis_facturas->count() }} facturas</p>
+        <a href="{{ route('facturas.index') }}">Ver facturas</a>
     </li>
 </ul> 
 

@@ -24,4 +24,8 @@ class Cita extends Model
     {
         return $this->belongsTo(Vehiculo::class);
     }
+
+    public function factura(){
+        return $this->hasOne(Factura::class);
+    }
 }
