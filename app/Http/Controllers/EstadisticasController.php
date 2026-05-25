@@ -37,8 +37,45 @@ class EstadisticasController extends Controller
         });
 
         $vehiculosPorMarca = Vehiculo::select('marca')
-        ->selectRaw('COUNT(*) as total')->groupBy('marca')->get();
+        ->selectRaw('COUNT(*) as total')
+        ->groupBy('marca')
+        ->orderBy('total', 'desc')
+        ->get();    
 
-        return view('estadisticas.index', compact('citasPorMes', 'vehiculosPorMarca'));
+        $repuestosVendidos =
+    DetalleFactura::join(
+        'repuestos',
+        'detalle_facturas.repuesto_id',
+        '=',
+        'repuestos.id'
+            )
+            ->select(
+                'repuestos.nombre'
+            )
+            ->selectRaw(
+                'SUM(detalle_facturas.cantidad) as total'
+            )
+            ->groupBy(
+                'repuestos.nombre'
+            )
+            ->orderByDesc('total')
+            ->take(5)
+            ->get();
+
+    $ingresosPorMes = Factura::selectRaw(
+        'EXTRACT(MONTH FROM created_at) as mes,
+        SUM(total) as total'
+    )
+    ->groupBy('mes')
+    ->orderBy('mes')
+    ->get();
+
+    $ingresosPorMes->transform(function ($ingreso) use ($nombresMeses) {
+        $ingreso->mes = $nombresMeses[$ingreso->mes] ?? $ingreso->mes;
+        return $ingreso;
+    });
+
+        return view('estadisticas.index', 
+        compact('citasPorMes', 'vehiculosPorMarca', 'repuestosVendidos', 'ingresosPorMes'));
     }
 }
