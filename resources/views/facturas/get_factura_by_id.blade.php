@@ -42,5 +42,5 @@ Vehículo:
 
 
 
-<a href="#">PDF</a>
+<a href="{{ route('facturas.pdf', $factura) }}">PDF</a>
 

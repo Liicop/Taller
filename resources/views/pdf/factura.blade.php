@@ -1,0 +1,1 @@
+@include('facturas.get_factura_by_id', compact('factura'))
