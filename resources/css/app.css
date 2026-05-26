@@ -1,3 +1,185 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+/* ==========================================================================
+   TEMA: AZUL PETRÓLEO + GRIS GRAFITO + NARANJA AUTOMOTRIZ
+   ========================================================================== */
+
+/* Fondo general de la aplicación */
+body {
+    background-color: #0b0f19 !important; /* Azul petróleo muy profundo */
+    color: #f1f5f9 !important; /* Gris humo claro (slate-100) para máxima legibilidad */
+}
+
+/* Barra de navegación superior */
+nav {
+    background-color: #111827 !important; /* Gris grafito oscuro */
+    border-bottom: 1px solid #1e293b !important; /* Azul petróleo de división */
+}
+
+/* Enlaces y botones de navegación */
+nav a, nav button, nav span {
+    color: #94a3b8 !important; /* Slate-400 */
+}
+
+nav a:hover, nav button:hover {
+    color: #f97316 !important; /* Naranja automotriz al pasar el cursor */
+}
+
+/* Tarjetas de información y secciones (.mechanic-card) */
+.mechanic-card {
+    background-color: #161e2e !important; /* Gris grafito azulado */
+    border: 1px solid #243c5a !important; /* Azul petróleo medio para dar separación clara */
+    border-radius: 1rem;
+    padding: 1.5rem;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.mechanic-card:hover {
+    border-color: #f97316 !important; /* Naranja automotriz en hover */
+    box-shadow: 0 0 20px rgba(249, 115, 22, 0.15); /* Brillo naranja sutil */
+    transform: translateY(-2px);
+}
+
+/* Títulos con contraste óptimo */
+.text-title {
+    color: #ffffff !important; /* Blanco puro */
+}
+
+.text-desc {
+    color: #cbd5e1 !important; /* Gris slate claro (slate-300) para evitar fatiga visual */
+}
+
+.text-accent {
+    color: #f97316 !important; /* Naranja automotriz */
+}
+
+/* Botón Principal (Naranja Automotriz) */
+.btn-primary {
+    background-color: #f97316 !important;
+    color: #0b0f19 !important; /* Azul petróleo oscuro para máximo contraste */
+    font-weight: 700 !important;
+    border-radius: 0.75rem !important;
+    box-shadow: 0 4px 6px rgba(249, 115, 22, 0.2) !important;
+    transition: all 0.2s ease-in-out !important;
+}
+
+.btn-primary:hover {
+    background-color: #ea580c !important; /* Naranja más oscuro */
+    box-shadow: 0 0 15px rgba(249, 115, 22, 0.4) !important;
+}
+
+/* Botón Secundario (Gris Grafito) */
+.btn-secondary {
+    background-color: #1f2937 !important; /* Gris grafito */
+    color: #f8fafc !important;
+    border: 1px solid #374151 !important;
+    font-weight: 600 !important;
+    border-radius: 0.75rem !important;
+    transition: all 0.2s ease-in-out !important;
+}
+
+.btn-secondary:hover {
+    background-color: #374151 !important;
+    border-color: #f97316 !important;
+}
+
+/* ==========================================================================
+   PERSONALIZACIÓN DE DATATABLES (TEMA OSCURO PREMIUM)
+   ========================================================================== */
+.dataTables_wrapper {
+    color: #cbd5e1 !important;
+    padding: 1rem 0;
+}
+
+/* Buscador y selector de registros */
+.dataTables_wrapper .dataTables_length select,
+.dataTables_wrapper .dataTables_filter input {
+    background-color: #161e2e !important;
+    border: 1px solid #243c5a !important;
+    color: #ffffff !important;
+    border-radius: 0.5rem !important;
+    padding: 0.4rem 0.8rem !important;
+    outline: none;
+    transition: border-color 0.2s ease;
+}
+
+.dataTables_wrapper .dataTables_length select:focus,
+.dataTables_wrapper .dataTables_filter input:focus {
+    border-color: #f97316 !important;
+}
+
+/* Info del número de página */
+.dataTables_wrapper .dataTables_info {
+    color: #94a3b8 !important;
+    font-size: 0.875rem;
+    padding-top: 1rem;
+}
+
+/* Paginador */
+.dataTables_wrapper .dataTables_paginate {
+    padding-top: 1rem;
+}
+
+.dataTables_wrapper .dataTables_paginate .paginate_button {
+    color: #94a3b8 !important;
+    border-radius: 0.5rem !important;
+    border: 1px solid transparent !important;
+    transition: all 0.2s ease;
+}
+
+.dataTables_wrapper .dataTables_paginate .paginate_button:hover {
+    background: #1f2937 !important;
+    border-color: #374151 !important;
+    color: #ffffff !important;
+}
+
+.dataTables_wrapper .dataTables_paginate .paginate_button.current,
+.dataTables_wrapper .dataTables_paginate .paginate_button.current:hover {
+    background: #f97316 !important; /* Naranja automotriz */
+    color: #0b0f19 !important;
+    font-weight: 700;
+    border-color: #f97316 !important;
+}
+
+.dataTables_wrapper .dataTables_paginate .paginate_button.disabled,
+.dataTables_wrapper .dataTables_paginate .paginate_button.disabled:hover {
+    color: #4b5563 !important;
+}
+
+/* Tabla en sí */
+table.dataTable {
+    border-collapse: collapse !important;
+    width: 100% !important;
+    margin-top: 1.5rem !important;
+    border-radius: 0.75rem !important;
+    overflow: hidden !important;
+    border: 1px solid #243c5a !important;
+}
+
+table.dataTable thead th {
+    background-color: #111827 !important; /* Gris grafito oscuro */
+    color: #ffffff !important;
+    border-bottom: 2px solid #243c5a !important;
+    font-weight: 700;
+    text-transform: uppercase;
+    font-size: 0.75rem;
+    letter-spacing: 0.05em;
+    padding: 1rem !important;
+}
+
+table.dataTable tbody tr {
+    background-color: #161e2e !important;
+}
+
+table.dataTable tbody tr:hover {
+    background-color: #1e283b !important; /* Resaltado al pasar el cursor */
+}
+
+table.dataTable tbody td {
+    padding: 1rem !important;
+    border-bottom: 1px solid #1e293b !important;
+    color: #cbd5e1 !important;
+}
